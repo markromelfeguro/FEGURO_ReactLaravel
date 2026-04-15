@@ -23,7 +23,8 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   const location = useLocation();
-
+  console.log("test");
+  
   const menuGroups: MenuGroup[] = [
     {
       group: "Main",
@@ -55,26 +56,40 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
 
             <ul className="space-y-1.5 font-medium">
               {group.items.map((item) => {
-                const isActive = location.pathname === item.path;
-
+                const isActive = location.pathname.startsWith(item.path);
                 return (
                   <li key={item.name}>
                     <Link
                       to={item.path}
-                      className={`flex items-center p-2.5 rounded-xl group ${
+                      className={`flex items-center p-2.5 rounded-xl group relative ${
                         isActive
                           ? "bg-primary text-bg-dark shadow scale-[1.02] z-10 hover:bg-primary/80"
                           : "text-text hover:text-bg-dark hover:bg-primary"
                       }`}
                     >
-                      <Icon
-                        iconName={item.icon}
-                        className={`transition-colors ${
+                      {/*  Vertical bar */}
+                      <span
+                        className={`absolute left-1 h-6 w-1 rounded-r bg-bg-light transition-all duration-300 
+                        ${
                           isActive
-                            ? "text-bg-dark"
-                            : "text-text group-hover:text-bg-dark"
+                            ? "group-hover:bg-secondary opacity-100 scale-y-100"
+                            : "opacity-0 scale-y-0 group-hover:opacity-100 group-hover:scale-y-100"
                         }`}
                       />
+
+                      {/* Icon */}
+                      <div className="ml-2">
+                        <Icon
+                          iconName={item.icon}
+                          className={`transition-colors ${
+                            isActive
+                              ? "text-bg-dark"
+                              : "text-text group-hover:text-bg-dark"
+                          }`}
+                        />
+                      </div>
+
+                      {/* Text */}
                       <span
                         className={`ml-3 text-sm ${
                           isActive
