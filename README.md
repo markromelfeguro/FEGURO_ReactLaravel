@@ -8,4 +8,4 @@ global:
 - forms (input, select etc.)✅
 - tables✅
 - Modal✅
-- Image
+- Image✅
