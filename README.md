@@ -20,4 +20,13 @@ Setting Up server (Laravel REST API)
     - Setting up .env cors.php app.php
     - php artisan migrate (make sure to run your xampp first)
 
-- Setting up migration, model, trait, resource, request, controller & api.php
+- Setting up migration, model, trait, controller, resource, request & api.php ✅
+    - php artisan make:trait Traits/ApiResponse
+    - php artisan make:enum Enums/UserRole
+    - php artisan make:controller API/v1/UserController --resource
+    - php artisan make:resource UserResource
+    - php artisan make:request UserRequest
+
+    Run this command after modifying the migration
+    - php artisan migrate:fresh
+    - php artisan db:seed
