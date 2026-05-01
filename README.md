@@ -30,3 +30,14 @@ Setting Up server (Laravel REST API)
     Run this command after modifying the migration
     - php artisan migrate:fresh
     - php artisan db:seed
+
+- Setting up a client-side connection to the server.
+    - .env configuration ✅
+    - .env types ✅
+    - axios connection (api and handling request) ✅
+    - useDebounce and useDateFormatter Hooks ✅
+    - service ✅
+        - Fetching Users (backend)
+        - Create User (with image handling)
+        - Edit/Update
+        - Delete (softd delete & permanently delete)
