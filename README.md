@@ -37,7 +37,7 @@ Setting Up server (Laravel REST API)
     - axios connection (api and handling request) ✅
     - useDebounce and useDateFormatter Hooks ✅
     - service ✅
-        - Fetching Users (backend)
-        - Create User (with image handling)
+        - Fetching Users (backend)✅
+        - Create User (with image handling) ✅
         - Edit/Update
         - Delete (softd delete & permanently delete)
