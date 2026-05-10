@@ -39,5 +39,7 @@ Setting Up server (Laravel REST API)
     - service ✅
         - Fetching Users (backend)✅
         - Create User (with image handling) ✅
-        - Edit/Update
-        - Delete (softd delete & permanently delete)
+        - Show ✅
+        - Edit/Update ✅
+        - Delete (softd delete & permanently delete) ✅
+        - Restore ✅
