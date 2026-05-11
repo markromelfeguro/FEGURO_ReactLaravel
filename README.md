@@ -43,3 +43,5 @@ Setting Up server (Laravel REST API)
         - Edit/Update ✅
         - Delete (softd delete & permanently delete) ✅
         - Restore ✅
+
+- Authentication & Authorization
