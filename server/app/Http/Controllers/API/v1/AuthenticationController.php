@@ -12,7 +12,7 @@ class AuthenticationController extends Controller
     
     public function login(Request $request): JsonResponse
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email'       => ['required', 'string', 'email'],
             'password'    => ['required', 'string'],
             'device_name' => ['sometimes', 'string'], // Mobile only
