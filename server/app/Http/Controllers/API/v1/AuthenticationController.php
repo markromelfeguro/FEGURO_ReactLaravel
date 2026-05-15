@@ -9,18 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticationController extends Controller
 {
     use ApiResponse;
-    /**
-     * Handle user login for both Web (session) and Mobile (token).
-     *
-     * How it works:
-     * - If the request includes `device_name`, it's a mobile client.
-     *   → Issues a Sanctum personal access token (Bearer token).
-     * - If `device_name` is absent, it's the web SPA.
-     *   → Uses session-based authentication (cookies).
-     *
-     * This follows Laravel Sanctum's official recommendation for
-     * supporting both SPA and mobile from the same controller.
-     */
+    
     public function login(Request $request): JsonResponse
     {
         $credentials = $request->validate([
@@ -33,9 +22,7 @@ class AuthenticationController extends Controller
             return $this->error('Invalid email or password.', 401);
         }
         $user = Auth::user();
-        // ──────────────────────────────────────────
-        // MOBILE: issue a Sanctum personal access token
-        // ──────────────────────────────────────────
+        
         if ($request->filled('device_name')) {
             // Revoke any existing tokens for this device (prevent duplicates)
             $user->tokens()->where('name', $request->device_name)->delete();
@@ -49,9 +36,7 @@ class AuthenticationController extends Controller
                 200
             );
         }
-        // ──────────────────────────────────────────
-        // WEB SPA: session-based auth (unchanged)
-        // ──────────────────────────────────────────
+ 
         $request->session()->regenerate();
         return $this->success(
             'Logged in successfully.',
